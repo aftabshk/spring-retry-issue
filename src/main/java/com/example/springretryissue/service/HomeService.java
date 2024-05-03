@@ -19,4 +19,14 @@ public class HomeService {
 
         throw new RuntimeException("Exception while executing");
     }
+
+    @Retryable(retryFor = {RuntimeException.class},
+            maxAttemptsExpression = "${retry.max-attempts}",
+            backoff = @Backoff(delayExpression = "${retry.delay2}",
+                    multiplierExpression = "${retry.multiplier2}"))
+    public void multiplierExpressionWithPointFiveValue() {
+        System.out.println(LocalDateTime.now().getSecond() + " Executing the service");
+
+        throw new RuntimeException("Exception while executing");
+    }
 }

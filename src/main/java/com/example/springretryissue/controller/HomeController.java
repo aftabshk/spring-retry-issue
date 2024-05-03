@@ -15,4 +15,9 @@ public class HomeController {
     public void home() {
         homeService.home();
     }
+
+    @GetMapping("/issue2")
+    public void issue2() {
+        homeService.home();
+    }
 }
